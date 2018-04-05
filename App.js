@@ -22,11 +22,11 @@ export default class App extends Component {
   isLoading: false,
     }
 }    
-onFacebook(){
+async onFacebook(){
 this.setState ({
     isLoading: true
 })
-LoginManager.logInWithReadPermissions(['public_profile', 'email'])
+await LoginManager.logInWithReadPermissions(['public_profile', 'email'])
 .then((result) => {
   if (result.isCancelled) {
     return Promise.reject(new Error('The user cancelled the request'));
@@ -34,16 +34,17 @@ LoginManager.logInWithReadPermissions(['public_profile', 'email'])
 
   console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
   // get the access token
-  return AccessToken.getCurrentAccessToken();
+  return  AccessToken.getCurrentAccessToken();
 })
 .then(data => {
     // create a new firebase credential with the token     
   const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-    
         // login with credential
     return firebase.auth().signInWithCredential(credential);
+    //return firebase.auth().signInAndRetrieveDataWithCredential(credential);
 })
 .then((currentUser) => {
+      console.info(JSON.stringify(currentUser.toJSON()))
       GetData.getUserInfo(currentUser.uid, (user) =>{
       if (user){
         
@@ -78,7 +79,7 @@ LoginManager.logInWithReadPermissions(['public_profile', 'email'])
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
-        { this.state.isLoading ? (<TouchableNativeFeedback  transparent onPress={() => this.onFacebook()}>
+        { !this.state.isLoading ? (<TouchableNativeFeedback  transparent onPress={() => this.onFacebook()}>
 								<View>
 									<Text style={{color: 'blue'}}>   Đăng nhập bằng Facebook</Text>
 								</View>
