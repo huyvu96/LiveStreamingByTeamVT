@@ -10,7 +10,7 @@ import Discover from './TabNavigator/Discover';
 import Live from './TabNavigator/Library';
 import User from './TabNavigator/User';
 import Nofication from './TabNavigator/Nofication'
-const{height} = Dimensions.get('window');
+const{height, width} = Dimensions.get('window');
 
 export const TabBar = TabNavigator({
     Home:{ 
@@ -71,21 +71,26 @@ export const TabBar = TabNavigator({
     swipeEnabled: false,
     animationEnabled: false,
     tabBarPosition : 'bottom',
-    tabBarComponent: TabBarBottom,
+    //tabBarComponent: TabBarBottom,
     tabBarOptions: {
         showLabel: false,
         showIcon: true,
         style: {
-            backgroundColor: 'transparent',
-            //borderTopColor: 'white',
+            backgroundColor: '#000',
+            borderTopColor: 'white',
             borderTopWidth: 0.18,
             height : height/ 15,
+            // position: 'absolute',
+            // right: 0,
+            // left: 0,
+            // bottom: 0,
+            // zIndex:200,
 
         },
         inactiveTintColor: '#636e72',
         activeTintColor: 'white',
         indicatorStyle: {
-            backgroundColor :'white',
+            backgroundColor :'transparent',
             width: height/ 20,
         },
         pressColor: '#ffff',

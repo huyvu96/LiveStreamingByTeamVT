@@ -11,10 +11,15 @@ import {
     Image,
     TouchableNativeFeedback,
     TouchableOpacity,
-    Animated
+    Animated,
+    StatusBar
 } from 'react-native';
-import * as Animatable from 'react-native-animatable'
-const { height, width } = Dimensions.get('window')
+import Swiper from 'react-native-swiper';
+import * as Animatable from 'react-native-animatable';
+const { height, width } = Dimensions.get('window');
+import ListVideo from '../Components/ListVideo';
+import SwiperLive from '../Components/SwiperLive';
+
 //const data = Array(20).fill().map((_, index) => ({ key: index }))
 import styles from './../styles';
 export default class Home extends Component {
@@ -69,42 +74,32 @@ export default class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style ={{flexDirection: 'row', justifyContent:'center', padding: height/80, position: 'absolute',
-                        right: width /4,
-                        left: width/4,
-                        top: height/ 35,
-                        zIndex:100
-                        }}>
+            <StatusBar
+                backgroundColor="transparent"
+                translucent
+            />
+                <View style ={styles.viewHome}>
                     <TouchableOpacity onPress = {() => this.onChooseTab(1)}>
                         <View>
-                            <Animatable.Text ref={text => this.Follow = text} style = {[{color: 'white', opacity: 0.54, fontSize: 15}, this.state.isFollow && {fontSize: 16}]}>Follow</Animatable.Text>
+                            <Animatable.Text ref={text => this.Follow = text} style = {[styles.styleOnPress, this.state.isFollow && styles.styleUnPress]}>Theo dõi</Animatable.Text>
                         </View>
                     </TouchableOpacity>
-                    <View style = {{width: 0.5, height: 5, backgroundColor:'white', margin: 5, alignSelf: 'center'}}></View>
+                    <View style = {styles.styleDivide}></View>
                     <TouchableOpacity onPress = {() => this.onChooseTab(2)}>
                         <View>
-                        <Animatable.Text ref={text => this.Popular = text} style = {[{color: 'white', opacity: 0.54,fontSize: 15}, this.state.isPopular && {opacity: 1,fontSize: 16}]}>Popular</Animatable.Text>
+                        <Animatable.Text ref={text => this.Popular = text} style = {[styles.styleOnPress, this.state.isPopular && styles.styleUnPress]}>Phổ biến</Animatable.Text>
                         </View>
                     </TouchableOpacity>
-                    <View style = {{width: 0.5, height: 5, backgroundColor:'white', margin: 5, alignSelf: 'center'}}></View>
+                    <View style = {styles.styleDivide}></View>
                     <TouchableOpacity onPress = {() => this.onChooseTab(3)}>
                         <View>
-                        <Animatable.Text ref={text => this.New = text}  style = {[{color: 'white', opacity: 0.54,fontSize: 15}, this.state.isNew && {fontSize: 16}]}>New</Animatable.Text>
+                        <Animatable.Text ref={text => this.New = text}  style = {[styles.styleOnPress, this.state.isNew && styles.styleUnPress]}>Mới nhất</Animatable.Text>
                         </View>
                     </TouchableOpacity>
                 </View>
-                { this.state.isFollow && <View style = {{backgroundColor:'#2d3436', flex:1, alignItems: 'center', justifyContent:'center'}}>
-                    <Text>Tab 1</Text>
-                    </View>
-                }
-                { this.state.isPopular &&  <View style = {{backgroundColor:'#2d3436', flex:1, alignItems: 'center', justifyContent:'center'}}>
-                    <Text>Tab 2</Text>
-                </View>
-                }
-                { this.state.isNew && <View style = {{backgroundColor:'#2d3436', flex:1, alignItems: 'center', justifyContent:'center'}}>
-                    <Text>Tab 3</Text>
-                </View>
-                }
+                { this.state.isFollow && <ListVideo />}
+                { this.state.isPopular &&  <SwiperLive />}
+                { this.state.isNew && <ListVideo/>}
             </View>
         );
     }
