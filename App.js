@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { LoginButton,AccessToken, LoginManager } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
-//import GetData from './getData'
+import GetData from './src/Database/getData'
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -41,7 +41,7 @@ await LoginManager.logInWithReadPermissions(['public_profile', 'email'])
   const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
         // login with credential
     return firebase.auth().signInWithCredential(credential);
-    //return firebase.auth().signInAndRetrieveDataWithCredential(credential);
+    //return firebase.auth().sgnInAndRetrieveDataWithCredential(credential);
 })
 .then((currentUser) => {
       console.info(JSON.stringify(currentUser.toJSON()))
@@ -61,7 +61,7 @@ await LoginManager.logInWithReadPermissions(['public_profile', 'email'])
         GetData.setUserInfo(userinfo)
       }
     })		                   
-                })   
+})   
 .catch((error) => {
     console.log('hehe',error);
         alert(error);

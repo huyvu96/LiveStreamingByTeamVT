@@ -10,6 +10,7 @@ import Discover from './TabNavigator/Discover';
 import Live from './TabNavigator/Library';
 import User from './TabNavigator/User';
 import Nofication from './TabNavigator/Nofication'
+import ScreenLogin from './Screen/ScreenLogin';
 const{height, width} = Dimensions.get('window');
 
 export const TabBar = TabNavigator({
@@ -76,31 +77,40 @@ export const TabBar = TabNavigator({
         showLabel: false,
         showIcon: true,
         style: {
-            backgroundColor: 'transparent',
+            backgroundColor: '#000',
             borderTopColor: 'white',
-            borderTopWidth: 0.2,
+            borderTopWidth: 0.18,
             height : height/ 15,
            // position: 'absolute',
-            //right: 0,
-            //left: 0,
-            //bottom: 0,
-            //zIndex:200,
-            elevation: 0
+           // right: 0,
+           // left: 0,
+           // bottom: 0,
+           // zIndex:200,
+           //elevation: 0
         },
         inactiveTintColor: '#636e72',
         activeTintColor: 'white',
         indicatorStyle: {
             backgroundColor :'transparent',
-            width: height/ 20,
         },
         pressColor: '#ffff',
-        tabStyle :{
-            borderTopColor: 'white',
-            borderTopWidth: 0.18,
-            backgroundColor: 'transparent',
+        // tabStyle :{
+        //     borderTopColor: 'white',
+        //     borderTopWidth: 0.18,
+        //     backgroundColor: 'transparent',
 
-        }
+        // }
         //pressOpacity: 100,
     }
 }
 )
+export const RootNavigator = StackNavigator({
+    TabBar: {screen: TabBar},
+    ScreenLogin: {screen: ScreenLogin},   
+},{
+    initialRouteName: "ScreenLogin",
+    headerMode: "none",
+}
+
+)
+

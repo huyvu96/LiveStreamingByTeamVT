@@ -22,10 +22,6 @@ export default class Nofication extends Component {
                 <View style={styleNotification.viewAbove}>
                     {/* View header */}
                     <View style={styleNotification.viewHeader}>
-                        <StatusBar
-                            backgroundColor="#757575"
-                            barStyle="light-content"
-                        />
                         <View style={styleNotification.viewTitleHeader}>
                             <Text style={{ color: '#757575' }}>abcdef</Text>
                             <Text style={styleNotification.title}>Nhắn tin</Text>
@@ -74,8 +70,6 @@ export default class Nofication extends Component {
                 </View>
                 <View style={[{ backgroundColor: '#272822' }, styleNotification.container]}></View>
             </View>
-
-
         );
     }
 }

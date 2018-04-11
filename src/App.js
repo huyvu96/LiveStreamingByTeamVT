@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {View, Text, StatusBar,AsyncStorage} from 'react-native';
-import configureStore from './Redux/Store/configStore'
+import store from './Redux/Store/configStore'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
-import {TabBar} from './Router';
+import {TabBar, RootNavigator} from './Router';
 import styles from './styles'
-const {persistor, store} = configureStore()
+//const {persistor, store} = configureStore()
 //StatusBar.setHidden(true);
 
 export default class App extends Component {
@@ -15,11 +15,9 @@ export default class App extends Component {
     render() {
         return (
             <Provider store = {store}>
-                <PersistGate persistor={persistor}>
-                <View style = {styles.container}>               
-                <TabBar/>
-                </View>
-                </PersistGate>
+                {/* <PersistGate loading={null} persistor={persistor}> */}
+                <RootNavigator/>
+                {/* </PersistGate> */}
             </Provider>
         );
     }
