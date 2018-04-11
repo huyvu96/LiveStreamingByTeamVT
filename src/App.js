@@ -7,6 +7,7 @@ import {TabBar} from './Router';
 import styles from './styles'
 const {persistor, store} = configureStore()
 //StatusBar.setHidden(true);
+
 export default class App extends Component {
     constructor(props){
         super(props);    

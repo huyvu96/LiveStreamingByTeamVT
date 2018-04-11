@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { LoginButton,AccessToken, LoginManager } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
-import GetData from './getData'
+//import GetData from './getData'
 export default class App extends Component {
   constructor(props) {
     super(props)

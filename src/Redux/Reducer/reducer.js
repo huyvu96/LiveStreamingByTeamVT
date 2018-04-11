@@ -1,10 +1,7 @@
 import { combineReducers } from 'redux'
-import infouserReducer from './inforUser'
-import infoItemShopReducer from './inforItemShop'
-import stateItemChange from './stateItemChange';
+import userLoginReducer from './userLoginReducer'
+
 const rootReducer = combineReducers ({
-    infouser : infouserReducer,
-    inforitemshop: infoItemShopReducer,
-    stateItem: stateItemChange
+    infoUser : userLoginReducer
 })
 export default rootReducer

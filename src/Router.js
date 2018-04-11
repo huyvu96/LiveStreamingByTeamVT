@@ -67,25 +67,25 @@ export const TabBar = TabNavigator({
 },
 {   
     initialRouteName: 'Home',
-    lazyLoad: true,
+    lazyLoad: false,
     swipeEnabled: false,
     animationEnabled: false,
     tabBarPosition : 'bottom',
-    //tabBarComponent: TabBarBottom,
+    tabBarComponent: TabBarBottom,
     tabBarOptions: {
         showLabel: false,
         showIcon: true,
         style: {
-            backgroundColor: '#000',
+            backgroundColor: 'transparent',
             borderTopColor: 'white',
-            borderTopWidth: 0.18,
+            borderTopWidth: 0.2,
             height : height/ 15,
-            // position: 'absolute',
-            // right: 0,
-            // left: 0,
-            // bottom: 0,
-            // zIndex:200,
-
+           // position: 'absolute',
+            //right: 0,
+            //left: 0,
+            //bottom: 0,
+            //zIndex:200,
+            elevation: 0
         },
         inactiveTintColor: '#636e72',
         activeTintColor: 'white',
@@ -94,7 +94,12 @@ export const TabBar = TabNavigator({
             width: height/ 20,
         },
         pressColor: '#ffff',
-        
+        tabStyle :{
+            borderTopColor: 'white',
+            borderTopWidth: 0.18,
+            backgroundColor: 'transparent',
+
+        }
         //pressOpacity: 100,
     }
 }
