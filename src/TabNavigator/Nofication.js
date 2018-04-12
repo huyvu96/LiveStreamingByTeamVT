@@ -19,6 +19,7 @@ export default class Nofication extends Component {
     render() {
         return (
             <View style={styleNotification.container}>
+             
                 <View style={styleNotification.viewAbove}>
                     {/* View header */}
                     <View style={styleNotification.viewHeader}>
@@ -68,7 +69,7 @@ export default class Nofication extends Component {
                         </View>
                     </View>
                 </View>
-                <View style={[{ backgroundColor: '#272822' }, styleNotification.container]}></View>
+                <View style={[{ backgroundColor: '#161823' }, styleNotification.container]}></View>
             </View>
         );
     }

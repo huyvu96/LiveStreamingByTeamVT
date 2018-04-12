@@ -19,6 +19,7 @@ const { height, width } = Dimensions.get('window');
 import styles from './../styles';
 import data from '../data';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient'
 
 export default class SwiperLive extends Component {
     render() {
@@ -31,6 +32,8 @@ export default class SwiperLive extends Component {
                   {data.map((e, i) =>
                   <View key = {'key' + i }style = {{height: height, width: width}}>
                   <Image source={{uri: e.image}} style={styles.imagePopular}/>
+                  <LinearGradient colors={['rgba(0,0,0, 0.7)','rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)']}  style={styles.imagePopularLinear}/>
+
                   <View style ={styles.viewChat}>
                     <Text style ={styles.styleTextChat}>Vũ: Đẹp quá z</Text>
                     <Text style ={styles.styleTextChat}>Trâm: Đẹp đẹp</Text>

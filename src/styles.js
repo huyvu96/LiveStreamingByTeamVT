@@ -7,13 +7,14 @@ export const imageWidth = width;
 export const imageHeight = (imageWidth / 500) *330;
 
 export default StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#2d3436',},
+    container: { flex: 1, backgroundColor: '#161823',},
     viewHome: {flexDirection: 'row', justifyContent:'center', padding: height/80, position: 'absolute', right: width /6,left: width/6,top: height/ 35,zIndex:100,backgroundColor: 'transparent'},
     styleOnPress: {color: 'white', opacity: 0.54, fontSize: height/45},
     styleUnPress:{opacity: 1,fontSize: height/40},
     styleDivide: {width: height/800, height: height/100, backgroundColor:'white', margin: height/100, alignSelf: 'center'},
     imageItemtop:{height: height/2.5,width: width/2,resizeMode: 'cover',},
     imagePopular: {height: height,width: width,resizeMode: 'cover',},
+    imagePopularLinear: {height: height,width: width,position: 'absolute',},
     viewChat:{position: 'absolute',right: 0,left: height/60,bottom: height/13,zIndex:100,width: width/2, height:height/5, justifyContent:'flex-end'},
     styleTextChat:{ marginLeft: 5, color: 'white', fontSize: height/60, opacity: 0.54},
     viewFuntionVideo:{position: 'absolute',right: 5,bottom: height / 15,zIndex:100,alignItems:'center'},
@@ -25,30 +26,63 @@ export default StyleSheet.create({
     styleTextName: {alignSelf:'center', marginLeft: 5, color: 'white', fontSize:height/50, opacity: 0.8},
     styleViewItemTop:{flexDirection: 'row',position: 'absolute',right: 5,top: 5, zIndex:100,alignItems:'center'},
     styleIconItemTop:{fontSize: height/40, color: 'white'},
-    styleTextNumPerson: {alignSelf:'center', marginLeft: 5, fontSize: height/50, color: 'white'}
+    styleTextNumPerson: {alignSelf:'center', marginLeft: 5, fontSize: height/50, color: 'white'},
+    wraperSwiper1: {
+        height: height / 3.5,
+       backgroundColor: '#000'
+    },
+    wraper2: {
+        marginTop: 5,
+        height: undefined,
+        backgroundColor: '#000'
+    },
+   wrapperSwiper: {
+        //backgroundColor: '#2d3436',
+        height: height / 3.5,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    slide: {
+        //alignSelf: 'stretch',
+        height: height / 3.5,
+        width: null,
+        position: 'relative',
+      //  resizeMode: 'cover'
+    },
+    slideLinear: {
+        //alignSelf: 'stretch',
+        height: height / 3.5,
+        width: null,
+       // position: 'absolute',
+       // resizeMode: 'cover'
+    },
+    viewPage: {
+        flexDirection: 'row',
+        marginTop: height / 50,
+        alignItems: 'center'
+    },
+    titlePage: {
+        fontSize: height / 40,
+        fontWeight: 'normal',
+        marginLeft: height / 60,
+        color: 'white'
+    },
+    tron: {
+        backgroundColor: '#d35400',
+        height: height / 30,
+        width: height / 120,
+        //borderRadius: height/30
+    },
     // containerE: {
     //     backgroundColor: 'transparent',
     //     flex: 1,
     // },
-    // wraperSwiper1: {
-    //     height: height / 3.5,
-    //     backgroundColor: '#FFF'
-    // },
+    
     // wraper1: {
     //     height: undefined,
     //     backgroundColor: '#FFF'
     // },
-    // wraper2: {
-    //     marginTop: 5,
-    //     height: undefined,
-    //     backgroundColor: '#FFF'
-    // },
-    // wrapperSwiper: {
-    //     //backgroundColor: '#FFF',
-    //     height: height / 3.5,
-    //     alignItems: 'center',
-    //     justifyContent: 'center'
-    // },
+    
     // wraperDiscover: {
     //     alignItems: 'center',
     //     justifyContent: 'space-around',
@@ -56,13 +90,7 @@ export default StyleSheet.create({
     //     height: undefined,
     //     backgroundColor: '#FFF'
     // },
-    // slide: {
-    //     //alignSelf: 'stretch',
-    //     height: height / 3.5,
-    //     width: null,
-    //     position: 'relative',
-    //     resizeMode: 'cover'
-    // },
+    
     // image: {
     //     //alignSelf: 'stretch',
     //     height: height / 5.5,
@@ -70,23 +98,14 @@ export default StyleSheet.create({
     //     // position: 'relative',
     //     resizeMode: 'cover'
     // },
-    // viewPage: {
-    //     flexDirection: 'row',
-    //     marginTop: height / 50,
-    //     alignItems: 'center'
-    // },
+   
     // viewPage1: {
     //     //flexDirection: 'row',
     //     marginTop: height / 50,
     //     alignItems: 'center',
     //     marginBottom: height / 50
     // },
-    // titlePage: {
-    //     fontSize: height / 40,
-    //     fontWeight: 'normal',
-    //     marginLeft: height / 60,
-    //     color: 'black'
-    // },
+    
     // titlePage1: {
     //     fontSize: height / 50,
     //     fontWeight: 'normal',
@@ -94,12 +113,7 @@ export default StyleSheet.create({
     //     color: 'black',
     //     textAlign: 'center'
     // },
-    // tron: {
-    //     backgroundColor: '#d35400',
-    //     height: height / 30,
-    //     width: height / 120,
-    //     //borderRadius: height/30
-    // },
+    
     // tron1: {
     //     backgroundColor: '#d35400',
     //     height: height / 13,

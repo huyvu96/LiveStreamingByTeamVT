@@ -13,11 +13,11 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white'
+        backgroundColor: '#161823'
     },
     viewAbove: {
         flex: 0.5,
-        backgroundColor: "#757575"
+        backgroundColor: "#1e272e"
     },
     viewAvatar: {
         paddingTop: 50,
