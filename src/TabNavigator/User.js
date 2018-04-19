@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, Animated } from "react-native"
+import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, Animated ,StatusBar} from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons'
 const { height, width } = Dimensions.get('window')
 import style from '../TramStyle'
@@ -38,6 +38,10 @@ export default class Profile extends Component {
         return (
             <View style={style.container}>
                 {/* View trên */}
+                <StatusBar
+                backgroundColor="#161823"
+                translucent = {false}
+            />
                 <View style={style.viewAbove}>
                     {/* View avatar */}
                     <View

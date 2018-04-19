@@ -75,8 +75,8 @@ export default class Home extends Component {
         return (
             <View style={styles.container}>
             <StatusBar
-                backgroundColor="transparent"
-                translucent = {true}
+                backgroundColor="#161823"
+                translucent = {false}
             />
                 <View style ={styles.viewHome}>
                     <TouchableOpacity onPress = {() => this.onChooseTab(1)}>

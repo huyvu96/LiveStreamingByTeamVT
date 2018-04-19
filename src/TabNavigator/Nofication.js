@@ -19,7 +19,10 @@ export default class Nofication extends Component {
     render() {
         return (
             <View style={styleNotification.container}>
-             
+                  <StatusBar
+                backgroundColor="#161823"
+                translucent = {false}
+            />
                 <View style={styleNotification.viewAbove}>
                     {/* View header */}
                     <View style={styleNotification.viewHeader}>
@@ -28,7 +31,7 @@ export default class Nofication extends Component {
                             <Text style={styleNotification.title}>Nhắn tin</Text>
                             <Icon name='md-chatbubbles' style={styleNotification.iconHeader} />
                         </View>
-                    </View>
+                </View>
                     {/* View các button nhắn tin */}
                     <View style={[styleNotification.container, styleNotification.viewTitleHeader]}>
                         {/* Người theo dõi */}
