@@ -98,10 +98,11 @@ export const TabBar = TabNavigator({
 export const RootNavigator = StackNavigator({
     TabBar: { screen: TabBar },
     ScreenLogin: { screen: ScreenLogin },
-    Nofication:{screen:Nofication}
+    Nofication:{screen: Nofication},
+    User:{screen:User},
 },
     {
-        initialRouteName: "Nofication",
+        initialRouteName: "TabBar",
         headerMode: "none",
     }
 
