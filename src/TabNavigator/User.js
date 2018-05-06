@@ -38,10 +38,6 @@ export default class Profile extends Component {
         return (
             <View style={style.container}>
                 {/* View trên */}
-                <StatusBar
-                backgroundColor="#161823"
-                translucent = {false}
-            />
                 <View style={style.viewAbove}>
                     {/* View avatar */}
                     <View

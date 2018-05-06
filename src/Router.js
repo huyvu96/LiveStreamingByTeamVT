@@ -108,7 +108,7 @@ export const RootNavigator = StackNavigator({
     TabBar: {screen: TabBar},
     ScreenLogin: {screen: ScreenLogin},   
 },{
-    initialRouteName: "TabBar",
+    initialRouteName: "Home",
     headerMode: "none",
 }
 

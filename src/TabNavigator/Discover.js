@@ -41,10 +41,6 @@ export default class Home extends Component {
         return (
             <View style={styles.container}>
             <ScrollView>
-            <StatusBar
-                backgroundColor="#161823"
-                translucent = {false}
-            />
             <View style ={{backgroundColor: 'transparent', alignItems:'center', justifyContent:'flex-start', flexDirection: 'row'}}> 
                 <View style ={{backgroundColor: '#5B5D66',alignItems:'center', justifyContent:'center',flexDirection: 'row', borderRadius: height/35}}>
                 <Icon name ='ios-search' style ={{fontSize: height/30, color: 'white', marginLeft: height/80}}/>

@@ -19,10 +19,6 @@ export default class Nofication extends Component {
     render() {
         return (
             <View style={styleNotification.container}>
-                  <StatusBar
-                backgroundColor="#161823"
-                translucent = {false}
-            />
                 <View style={styleNotification.viewAbove}>
                     {/* View header */}
                     <View style={styleNotification.viewHeader}>

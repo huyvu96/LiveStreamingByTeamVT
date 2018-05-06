@@ -15,9 +15,15 @@ export default class App extends Component {
     render() {
         return (
             <Provider store = {store}>
+            <View style= {{flex:1}}>
+            <StatusBar
+                backgroundColor="#161823"
+                translucent = {false}
+            />
                 {/* <PersistGate loading={null} persistor={persistor}> */}
                 <RootNavigator/>
                 {/* </PersistGate> */}
+            </View>           
             </Provider>
         );
     }

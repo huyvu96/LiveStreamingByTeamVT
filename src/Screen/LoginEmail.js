@@ -11,7 +11,8 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TextInput,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
+  StatusBar
 } from 'react-native';
 
 
@@ -21,7 +22,7 @@ import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const BG_IMAGE = require('../assets/login_bg.jpg');
+//const BG_IMAGE = require('../assets/login_bg.jpg');
 
 // Enable LayoutAnimation on Android
 UIManager.setLayoutAnimationEnabledExperimental
@@ -135,9 +136,13 @@ export default class Login extends Component {
 
     return (
       <View style={styles.container}>
+        {/* <StatusBar
+                backgroundColor="transparent"
+                translucent = {true}
+            /> */}
         <ImageBackground
-          source={BG_IMAGE}
-          style={styles.bgImage}
+              source={{uri:'https://raw.githubusercontent.com/react-native-training/react-native-elements-app/master/assets/images/bg_screen3.jpg'}}
+              style={styles.bgImage}
         >
           {this.state.fontLoaded ?
             <View>
