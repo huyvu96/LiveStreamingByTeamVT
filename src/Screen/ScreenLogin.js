@@ -147,7 +147,7 @@ render() {
                       <Text style={{
                           fontSize: 26,
                           fontWeight: 'bold'
-                      }}>TRAM</Text>
+                      }}>iTV</Text>
                   </Animatable.View>
               </View>
 

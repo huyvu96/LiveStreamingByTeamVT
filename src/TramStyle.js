@@ -7,7 +7,7 @@ const { height, width } = Dimensions.get('window');
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#1e272e"
+        backgroundColor: "#161823"
     },
     // màn hình User
     viewMyVideo: {
@@ -18,7 +18,7 @@ export default StyleSheet.create({
     },
     viewAbove: {
         flex: 0.35,
-        backgroundColor: "#1e272e",
+       // backgroundColor: "#1e272e",
         alignItems:'center',
         justifyContent:'center'
     },

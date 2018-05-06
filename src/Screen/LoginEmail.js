@@ -148,11 +148,11 @@ export default class Login extends Component {
             <View>
               <KeyboardAvoidingView contentContainerStyle={styles.loginContainer} behavior='position'>
                 <View style={styles.titleContainer}>
-                  <View style={{ flexDirection: 'row' }}>
+                  {/* <View style={{ flexDirection: 'row' }}>
                     <Text style={styles.titleText}>BAO</Text>
-                  </View>
+                  </View> */}
                   <View style={{ marginTop: -10, marginLeft: 10 }}>
-                    <Text style={styles.titleText}>TRAMMM</Text>
+                    <Text style={styles.titleText}>iTV</Text>
                   </View>
                 </View>
                 <View style={{ flexDirection: 'row' }}>

@@ -22,14 +22,14 @@ export default class User extends Component {
         if (this.state.activeIndex == 0) {
             return (
                 <View style={style.viewMyVideo} >
-                    <Text style={{ color: 'white' }}>Trâm xinh đẹp</Text>
+                    <Text style={{ color: 'white' }}>List Video Theo dõi</Text>
                 </View>
             )
         }
         else if (this.state.activeIndex == 1) {
             return (
                 <View style={style.viewMyVideo}>
-                    <Text style={{ color: 'white' }}>Vũ xấu xa đối xử tệ bạc</Text>
+                    <Text style={{ color: 'white' }}>List Video Lịch sử xem</Text>
                 </View>
             )
         }
