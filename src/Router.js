@@ -16,57 +16,48 @@ const { height, width } = Dimensions.get('window');
 export const TabBar = TabNavigator({
     Home: {
         screen: Home,
-        navigationOptions: {
-            //tabBarLabel: 'Accout',
-            tabBarIcon: ({ tintColor }) => (
-                <Ionicons
-                    name="ios-camera-outline" style={{ fontSize: height / 20, color: tintColor }}
-                />
-            ),
-        }
+       
     },
     Discover: {
         screen: Discover,
-        navigationOptions: {
-            // tabBarLabel: 'Home',
-            tabBarIcon: ({ tintColor }) => (
-                <Ionicons name='ios-planet-outline' style={{ fontSize: height / 20, color: tintColor }} />
-            ),
-        }
-    },
-    Live: {
-        screen: Live,
-        navigationOptions: {
-            // tabBarLabel: 'Map',
-            tabBarIcon: (
-                <Ionicons name='md-aperture' style={{ alignSelf: 'center', textAlign: 'center', fontSize: height / 25, color: 'rgba(255, 255, 255, 1.0)', borderLeftColor: '#00cec9', borderRightColor: '#d63031', borderLeftWidth: 3, borderRightWidth: 3, borderRadius: height / 40 }} />
-            ),
-        }
+       
     },
     Nofication: {
         screen: Nofication,
-        navigationOptions: {
-            //tabBarLabel: 'Order',
-            tabBarIcon: ({ tintColor }) => (
-                <Ionicons
-                    name="ios-notifications-outline" style={{ fontSize: height / 22, color: tintColor }}
-                />
-            ),
-        }
+       
     },
     User: {
         screen: User,
-        navigationOptions: {
-            //tabBarLabel: 'Order',
-            tabBarIcon: ({ tintColor }) => (
-                <Ionicons
-                    name="ios-contact-outline" style={{ fontSize: height / 25, color: tintColor }}
-                />
-            ),
-        }
+       
     },
 },
     {
+        navigationOptions: ({ navigation }) => ({
+            tabBarIcon: ({ focused, tintColor }) => {
+              const { routeName } = navigation.state;
+              let iconName;
+              switch(routeName){
+                  case 'Home':
+                  iconName = focused ? (<Ionicons name= 'ios-sync-outline' style ={{alignSelf:'center',textAlign:'center',fontSize: height/25, color:  tintColor, borderLeftColor: '#00cec9' ,borderRightColor: '#d63031',borderLeftWidth:3 ,borderRightWidth: 3, borderRadius: height/40}}/>):(<Ionicons
+                    name="ios-sync-outline" style={{fontSize: height/25, color: tintColor}}
+                  />);
+                  break;
+                  case 'Discover':
+                  iconName = focused ? (<Ionicons name= 'ios-aperture-outline' style ={{alignSelf:'center',textAlign:'center',fontSize: height/25, color:  tintColor, borderLeftColor: '#00cec9' ,borderRightColor: '#d63031',borderLeftWidth:3 ,borderRightWidth: 3, borderRadius: height/40}}/>):(<Ionicons
+                    name="ios-aperture-outline" style={{fontSize: height/25, color: tintColor}}
+                  />);              break;
+                  case 'Nofication':
+                  iconName = focused ? (<Ionicons name= 'ios-alert-outline' style ={{alignSelf:'center',textAlign:'center',fontSize: height/25, color:  tintColor, borderLeftColor: '#00cec9' ,borderRightColor: '#d63031',borderLeftWidth:3 ,borderRightWidth: 3, borderRadius: height/40}}/>):(<Ionicons
+                    name="ios-alert-outline" style={{fontSize: height/25, color: tintColor}}
+                  />);              break;
+                  case 'User':
+                  iconName = focused ? (<Ionicons name= 'ios-contact-outline' style ={{alignSelf:'center',textAlign:'center',fontSize: height/25, color:  tintColor, borderLeftColor: '#00cec9' ,borderRightColor: '#d63031',borderLeftWidth:3 ,borderRightWidth: 3, borderRadius: height/40}}/>):(<Ionicons
+                    name="ios-contact-outline" style={{fontSize: height/25, color: tintColor}}
+                  />);              break;
+              }
+              return iconName;
+            },
+        }),
         initialRouteName: 'Home',
         lazyLoad: false,
         swipeEnabled: false,
@@ -107,9 +98,10 @@ export const TabBar = TabNavigator({
 export const RootNavigator = StackNavigator({
     TabBar: { screen: TabBar },
     ScreenLogin: { screen: ScreenLogin },
+    Nofication:{screen:Nofication}
 },
     {
-        initialRouteName: "TabBar",
+        initialRouteName: "Nofication",
         headerMode: "none",
     }
 
