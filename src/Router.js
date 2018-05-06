@@ -1,8 +1,8 @@
-import { StackNavigator, TabNavigator,TabBarBottom} from 'react-navigation';
+import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 import React, { Component } from 'react';
 
 import Home from './TabNavigator/Home';
@@ -11,106 +11,107 @@ import Live from './TabNavigator/Library';
 import User from './TabNavigator/User';
 import Nofication from './TabNavigator/Nofication'
 import ScreenLogin from './Screen/ScreenLogin';
-const{height, width} = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
 export const TabBar = TabNavigator({
-    Home:{ 
+    Home: {
         screen: Home,
-        navigationOptions:{
+        navigationOptions: {
             //tabBarLabel: 'Accout',
             tabBarIcon: ({ tintColor }) => (
                 <Ionicons
-                  name="ios-camera-outline" style={{fontSize:height/20, color: tintColor}}
+                    name="ios-camera-outline" style={{ fontSize: height / 20, color: tintColor }}
                 />
-              ),
+            ),
         }
     },
     Discover: {
         screen: Discover,
-        navigationOptions:{
-           // tabBarLabel: 'Home',
+        navigationOptions: {
+            // tabBarLabel: 'Home',
             tabBarIcon: ({ tintColor }) => (
-                <Ionicons name='ios-planet-outline' style={{fontSize: height/20, color: tintColor}}/>
-              ),
+                <Ionicons name='ios-planet-outline' style={{ fontSize: height / 20, color: tintColor }} />
+            ),
         }
     },
     Live: {
         screen: Live,
         navigationOptions: {
-           // tabBarLabel: 'Map',
+            // tabBarLabel: 'Map',
             tabBarIcon: (
-                <Ionicons name= 'md-aperture' style ={{alignSelf:'center',textAlign:'center',fontSize: height/25, color:  'rgba(255, 255, 255, 1.0)', borderLeftColor: '#00cec9' ,borderRightColor: '#d63031',borderLeftWidth:3 ,borderRightWidth: 3, borderRadius: height/40}}/>
+                <Ionicons name='md-aperture' style={{ alignSelf: 'center', textAlign: 'center', fontSize: height / 25, color: 'rgba(255, 255, 255, 1.0)', borderLeftColor: '#00cec9', borderRightColor: '#d63031', borderLeftWidth: 3, borderRightWidth: 3, borderRadius: height / 40 }} />
             ),
         }
     },
-    Nofication:{
+    Nofication: {
         screen: Nofication,
-        navigationOptions:{
+        navigationOptions: {
             //tabBarLabel: 'Order',
             tabBarIcon: ({ tintColor }) => (
                 <Ionicons
-                  name="ios-notifications-outline" style={{fontSize: height/22, color: tintColor}}
+                    name="ios-notifications-outline" style={{ fontSize: height / 22, color: tintColor }}
                 />
-              ),
+            ),
         }
     },
-    User:{
+    User: {
         screen: User,
-        navigationOptions:{
+        navigationOptions: {
             //tabBarLabel: 'Order',
             tabBarIcon: ({ tintColor }) => (
                 <Ionicons
-                  name="ios-contact-outline" style={{fontSize: height/25, color: tintColor}}
+                    name="ios-contact-outline" style={{ fontSize: height / 25, color: tintColor }}
                 />
-              ),
+            ),
         }
     },
 },
-{   
-    initialRouteName: 'Home',
-    lazyLoad: false,
-    swipeEnabled: false,
-    animationEnabled: false,
-    tabBarPosition : 'bottom',
-    tabBarComponent: TabBarBottom,
-    tabBarOptions: {
-        showLabel: false,
-        showIcon: true,
-        style: {
-            backgroundColor: '#000',
-            borderTopColor: 'white',
-            borderTopWidth: 0.18,
-            height : height/ 15,
-           // position: 'absolute',
-           // right: 0,
-           // left: 0,
-           // bottom: 0,
-           // zIndex:200,
-           //elevation: 0
-        },
-        inactiveTintColor: '#636e72',
-        activeTintColor: 'white',
-        indicatorStyle: {
-            backgroundColor :'transparent',
-        },
-        pressColor: '#ffff',
-        // tabStyle :{
-        //     borderTopColor: 'white',
-        //     borderTopWidth: 0.18,
-        //     backgroundColor: 'transparent',
+    {
+        initialRouteName: 'Home',
+        lazyLoad: false,
+        swipeEnabled: false,
+        animationEnabled: false,
+        tabBarPosition: 'bottom',
+        tabBarComponent: TabBarBottom,
+        tabBarOptions: {
+            showLabel: false,
+            showIcon: true,
+            style: {
+                backgroundColor: '#000',
+                borderTopColor: 'white',
+                borderTopWidth: 0.18,
+                height: height / 15,
+                // position: 'absolute',
+                // right: 0,
+                // left: 0,
+                // bottom: 0,
+                // zIndex:200,
+                //elevation: 0
+            },
+            inactiveTintColor: '#636e72',
+            activeTintColor: 'white',
+            indicatorStyle: {
+                backgroundColor: 'transparent',
+            },
+            pressColor: '#ffff',
+            // tabStyle :{
+            //     borderTopColor: 'white',
+            //     borderTopWidth: 0.18,
+            //     backgroundColor: 'transparent',
 
-        // }
-        //pressOpacity: 100,
+            // }
+            //pressOpacity: 100,
+        }
     }
-}
 )
 export const RootNavigator = StackNavigator({
-    TabBar: {screen: TabBar},
-    ScreenLogin: {screen: ScreenLogin},   
-},{
-    initialRouteName: "Home",
-    headerMode: "none",
-}
+    TabBar: { screen: TabBar },
+    ScreenLogin: { screen: ScreenLogin },
+},
+    {
+        initialRouteName: "TabBar",
+        headerMode: "none",
+    }
 
 )
 

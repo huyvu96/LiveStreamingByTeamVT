@@ -1,9 +1,10 @@
 import React, { Component } from "react"
-import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, Animated ,StatusBar} from "react-native"
+import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity, Animated, StatusBar } from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons'
+
 const { height, width } = Dimensions.get('window')
 import style from '../TramStyle'
-export default class Profile extends Component {
+export default class User extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,14 +22,14 @@ export default class Profile extends Component {
         if (this.state.activeIndex == 0) {
             return (
                 <View style={style.viewMyVideo} >
-                    <Text style={{ color: 'black' }}>Trâm xinh đẹp</Text>
+                    <Text style={{ color: 'white' }}>Trâm xinh đẹp</Text>
                 </View>
             )
         }
         else if (this.state.activeIndex == 1) {
             return (
                 <View style={style.viewMyVideo}>
-                    <Text style={{ color: 'black' }}>Vũ xấu xa đối xử tệ bạc</Text>
+                    <Text style={{ color: 'white' }}>Vũ xấu xa đối xử tệ bạc</Text>
                 </View>
             )
         }
@@ -37,6 +38,14 @@ export default class Profile extends Component {
     render() {
         return (
             <View style={style.container}>
+                 {/* View header */}
+                 <View style={style.viewHeader}>     
+                     <Text style={{color:'#1e272e'}}>Tôi</Text>
+                     <Text style={style.title}>Tôi</Text>
+                     <TouchableOpacity>
+                            <Icon name="md-person-add" style={style.icon} />
+                    </TouchableOpacity>                                      
+                </View>
                 {/* View trên */}
                 <View style={style.viewAbove}>
                     {/* View avatar */}
@@ -47,52 +56,34 @@ export default class Profile extends Component {
                             source={{
                                 uri: 'https://kenh14cdn.com/2017/pic-2-1506069691973.jpg'
                             }} />
-                        <TouchableOpacity>
-                            <Icon name="md-person-add" style={[style.iconAdd, style.icon]} />
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Icon name="ios-more" style={[style.iconMore, style.icon]} />
-                        </TouchableOpacity>
+                        {/* <TouchableOpacity>
+                            <Icon name="md-person-add" style={style.icon} />
+                        </TouchableOpacity> */}
                     </View>
                     {/* View link facebook và Instagram */}
                     <View>
-                        <Text style={style.name}>Bảo Trâm</Text>
-                        <Text style={style.link}>Facebook: abcxyz</Text>
-                        <Text style={style.link}>Instagram: abcxyz</Text>
-                    </View>
-                    <View style={style.line} />
-                    {/* View theo dõi người theo dõi và lượt thích */}
-                    <View
-                        style={{
-                            height: height / 9,
-                            flexDirection: 'row',
-                            alignItems: 'center'
-                        }}>
-                        <Text style={[style.number, style.numberViewAbove]}>0</Text>
-                        <TouchableOpacity>
-                            <Text style={style.text}>Theo dõi</Text>
-                        </TouchableOpacity>
-                        <Text style={[style.number, style.numberViewAbove]}>0</Text>
-                        <TouchableOpacity>
-                            <Text style={style.text}>Người theo dõi</Text>
-                        </TouchableOpacity>
-                        <Text style={[style.number, style.numberViewAbove]}>0</Text>
-                        <TouchableOpacity>
-                            <Text style={style.text}>Lượt thích</Text>
-                        </TouchableOpacity>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={style.name}>Bảo Trâm</Text>
+                            <Image
+                                style={style.gender}
+                                source={{
+                                    uri: 'http://lisatheroadwarrior.com/wp-content/uploads/2015/01/400px-Pink_Venus_symbol.svg_-e1422187145609.png'
+                                }} />
+                        </View>
+
+                        <Text style={style.link}>Id: 123456</Text>
                     </View>
                 </View>
-
-                {/* view dưới */}
-                <View style={style.viewAbove}>
+                {/* View duoi */}
+                <View style={style.viewBehind}>
                     <View style={style.viewVideoLike}>
                         <TouchableOpacity
                             onPress={() => this.segmentClicked(0)}
                             active={this.state.activeIndex == 0}
                         >
                             <View style={[this.state.activeIndex == 0 ? { backgroundColor: '#FF9700' } : {}, style.videoArea]} >
-                                    <Text style={style.text}>Video</Text>
-                                    <Text style={[style.number, style.numberViewUnder]}>0</Text>
+                                <Text style={style.text}>Theo dõi</Text>
+                                <Text style={[style.number, style.numberViewUnder]}>0</Text>
                             </View>
 
                         </TouchableOpacity>
@@ -102,15 +93,15 @@ export default class Profile extends Component {
                         >
                             <View style={[this.state.activeIndex == 1 ? { backgroundColor: '#FF9700' } : {}, style.videoArea]}>
                                 <View style={{ height: height / 13.5, width: width / 2, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                    <Text style={style.text}>Thích</Text>
+                                    <Text style={style.text}>Lịch sử</Text>
                                     <Text style={[style.number, style.numberViewUnder]}>0</Text>
                                 </View>
                             </View>
                         </TouchableOpacity>
                     </View>
-                    {/* View chứa Video và thích */}
                     {this.renderSection()}
                 </View>
+
             </View>
         );
     }

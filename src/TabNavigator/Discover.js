@@ -40,20 +40,16 @@ export default class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-            <ScrollView>
-            <View style ={{backgroundColor: 'transparent', alignItems:'center', justifyContent:'flex-start', flexDirection: 'row'}}> 
-                <View style ={{backgroundColor: '#5B5D66',alignItems:'center', justifyContent:'center',flexDirection: 'row', borderRadius: height/35}}>
-                <Icon name ='ios-search' style ={{fontSize: height/30, color: 'white', marginLeft: height/80}}/>
-                <TextInput
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'Search video, music, challenges'
-                        placeholderTextColor = 'white'
-                        returnKeyType= 'search'
-                        style ={{fontSize: height/ 50 ,paddingLeft: 10 ,flex:1,height: height/ 17, backgroundColor: 'transparent',  color: 'white'}}>
-                </TextInput>
-                <Icon name ='ios-close' style ={{fontSize: height/30, color: 'white', marginRight: height/80}}/>
+            <ScrollView style={styles.container}> 
+                <View style ={{padding:height/120,backgroundColor: 'transparent',alignItems:'center',justifyContent:'center',flexDirection:'row',  position: 'absolute',
+           left: 0,
+           top: 0,
+           zIndex:100}}>
+                <Icon name ='ios-search' style ={{fontSize: height/20, color: 'white'}}/>       
+                <Text style ={{marginLeft:height/120,fontSize: height/ 40 ,padding: 5,alignSelf:'stretch',  color: 'white',textAlign:'center',height:height/20
+             ,borderRadius: height/20, borderColor:'white', borderWidth:0.8,flex:1
+            }}>Search video, channel for you</Text>
                 </View>
-            </View>
                 <View style={styles.container}>
                     <View style={styles.wraperSwiper1}>
                         {
@@ -115,7 +111,6 @@ export default class Home extends Component {
                 </View>
             </ScrollView>            
             </View>
-            
         );
     }
 }

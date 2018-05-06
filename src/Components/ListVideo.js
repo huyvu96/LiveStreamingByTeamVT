@@ -26,12 +26,8 @@ export default class ListVideo extends Component {
                 <View style = {{width: width/2}}>
                 <Image source={{uri: item.image}} style={styles.imageItemtop}/>
                 <View style ={styles.styleViewItemBottom}>
-                    <Image source={{uri: 'https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.0-9/29197246_2062594664016900_292927065248317668_n.jpg?_nc_cat=0&oh=b7c11a8b1c650a76934fd68b52a1d416&oe=5B75F3A6'}} style = {styles.avatarSmall}></Image>
-                    <Text style ={styles.styleTextName}>Huy Vu</Text>
-                    <View>
-                        <Text>#hashtag</Text>
-                        <Text>#hashtag</Text>
-                    </View>
+                    <Image source={{uri: 'https://lh3.googleusercontent.com/QUu-7yt4PPkkpsA7TpMs0MFAXzrW-fiWIlKlwu7obhpKO9fd393OV32dm-XrvntvMnM=s128'}} style = {styles.avatarSmall}></Image>
+                    <Text style ={styles.styleTextName}>Phim truyện</Text>
                 </View>
                 <View style ={styles.styleViewItemTop}>
                      <Ionicons

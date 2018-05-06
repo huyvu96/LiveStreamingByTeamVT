@@ -7,8 +7,9 @@ const { height, width } = Dimensions.get('window');
 export default StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "#1e272e"
     },
-    // màn hình profile
+    // màn hình User
     viewMyVideo: {
         flex: 1,
         alignItems: 'center',
@@ -16,11 +17,16 @@ export default StyleSheet.create({
         backgroundColor: '#161823'
     },
     viewAbove: {
-        flex: 0.5,
+        flex: 0.35,
+        backgroundColor: "#1e272e",
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    viewBehind: {
+        flex: 0.65,
         backgroundColor: "#1e272e"
     },
     viewAvatar: {
-        paddingTop: 50,
         flexDirection: 'row'
     },
     avatar: {
@@ -28,28 +34,28 @@ export default StyleSheet.create({
         height: height / 7,
         borderRadius: height / 7,
         resizeMode: 'cover',
-        marginLeft: 23
+    },
+    gender: {
+        width: height / 30,
+        height: height / 30,
+        resizeMode: 'cover',
+        marginLeft: 10,
+        alignSelf:'center'
     },
     icon: {
         color: 'white',
         fontSize: height / 23,
-        marginTop: height / 68
-    },
-    iconAdd: {
-        marginLeft: height / 3.5
-    },
-    iconMore: {
-        marginLeft: height / 45
-    },
+      
+    },        
     link: {
         color: 'white',
         fontSize: height / 45,
-        marginLeft: height / 23
+        textAlign:'center',
     },
     name: {
+        textAlign:'center',        
         color: 'white',
         fontSize: height / 27,
-        marginLeft: height / 23,
         marginTop: height / 68,
         fontFamily: 'bold'
     },
@@ -98,10 +104,13 @@ export default StyleSheet.create({
         marginTop: height / 45
     },
     viewHeader: {
-        height: height / 6,
-        elevation: height / 341,
-        justifyContent: 'center',
-        padding: height / 68
+        height: height / 15,
+        //elevation: height / 341,
+        justifyContent: 'space-between',
+        alignItems:'center',
+        flexDirection:'row',
+        padding: height/120,
+        //marginTop: height / 50,        
     },
     viewTitleHeader: {
         flexDirection: 'row',

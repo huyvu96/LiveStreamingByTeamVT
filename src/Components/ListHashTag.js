@@ -20,6 +20,7 @@ export default class ListCommicH extends Component {
                 <View style={styles.viewPage}>
                     <Text style={styles.tron}>#</Text>
                     <Text style={styles.titlePage}>{item.name}</Text>
+                    <Text style={[styles.titlePage,{fontSize:height/50}]}>(Đang chiếu: Phim truyền hình)</Text>
                 </View>
                 <FlatList
                  data={item.data}
