@@ -1,54 +1,38 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList,StyleSheet,TouchableNativeFeedback,Image,Dimensions } from 'react-native';
 const { height } = Dimensions.get('window')
-
-export default class ListCommicH extends Component {
+import styleList from '../TramStyle'
+export default class ListCanlendar extends Component {
     state = {  }
     _renderRecommend = ({ item }) => {
         return (
             <TouchableNativeFeedback>
-                <View style = {{width: height/7}}>
-                <Image source={{uri: item.image}} style={styles.imageItemtop}/>
-                <Text  numberOfLines = {2} style ={styles.titleCommic}>{item.name}</Text>
+                <View style={{flexDirection:'row', margin:height/100, flex:1}}>
+                <Text  numberOfLines = {1} style ={[styles.titleCommic,{flex: 3, alignSelf:'center',textAlign:'center'}]}>{item.time}</Text>
+                <Text  numberOfLines = {2} style ={[styles.titleCommic,{flex: 7, fontStyle:'italic'}]}>{item.name}</Text>
                 </View>              
             </TouchableNativeFeedback>  
         );
     }
-    _renderHashTag = ({ item }) => {
-        return (
-            <View style={styles.wraper2}>
-                <View style={styles.viewPage}>
-                    <Text style={styles.tron}>#</Text>
-                    <Text style={styles.titlePage}>{item.name}</Text>
-                </View>
-                <FlatList
-                 data={item.data}
-                 removeClippedSubviews={true}     
-                 contentContainerStyle={{padding:height/60}}       
-                 horizontal={true}
-                 ItemSeparatorComponent = {() => {return (<View style = {{width: height/ 80,}}/>)}}
-                 automaticallyAdjustContentInsets={true}                  
-                 extraData= {this.state}
-                 showsHorizontalScrollIndicator={false}
-                 keyExtractor={(item) => item.image}
-                 renderItem={this._renderRecommend}/>
-            </View>
-        );
-    }
     render() {
         return (
-            <View>
+            <View style={{flex:1}}>      
+                <View style={styleList.viewHeader}>   
+                    <Text style={[styleList.title,{fontSize:height/40}]}>Kênh phim</Text>                 
+                     <Text style={styleList.title}>Lịch chiếu</Text>      
+                     <Text style={[styleList.title,{fontSize:height/40}]}>16-5-2018</Text>                                 
+                </View>        
                 <FlatList
                  data={this.props.data}
                  removeClippedSubviews={true}     
                 // contentContainerStyle={{padding:height/60}}       
                  //horizontal={true}
-                 ItemSeparatorComponent = {() => {return (<View style = {{width: height/ 80,}}/>)}}
+                // ItemSeparatorComponent = {() => {return (<View style = {{width: height/ 80,}}/>)}}
                  automaticallyAdjustContentInsets={true}                  
                  extraData= {this.state}
-                 showsHorizontalScrollIndicator={false}
+                 showsVerticalScrollIndicator={false}
                  keyExtractor={(item) => item.name}
-                 renderItem={this._renderHashTag}/>
+                 renderItem={this._renderRecommend}/>
             </View>
         );
     }
@@ -62,7 +46,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     titleCommic: {
-        fontSize: height / 40,
+        fontSize: height / 35,
         fontWeight: 'normal',
         color: 'white',
         marginBottom: height / 100,

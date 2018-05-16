@@ -17,6 +17,7 @@ import Swiper from 'react-native-swiper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ListHashTag from '../Components/ListHashTag';
 import LinearGradient from 'react-native-linear-gradient'
+import data from '../data';
 const { height } = Dimensions.get('window')
 //const data = Array(20).fill().map((_, index) => ({ key: index }))
 import styles from './../styles';

@@ -74,7 +74,8 @@ export default class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style ={styles.viewHome}>
+                 <SwiperLive />
+                {/* <View style ={styles.viewHome}>
                     <TouchableOpacity onPress = {() => this.onChooseTab(1)}>
                         <View>
                             <Animatable.Text ref={text => this.Follow = text} style = {[styles.styleOnPress, this.state.isFollow && styles.styleUnPress]}>Theo dõi</Animatable.Text>
@@ -95,7 +96,7 @@ export default class Home extends Component {
                 </View>
                 { this.state.isFollow && <ListVideo />}
                 { this.state.isPopular &&  <SwiperLive />}
-                { this.state.isNew && <ListVideo/>}
+                { this.state.isNew && <ListVideo/>} */}
             </View>
         );
     }

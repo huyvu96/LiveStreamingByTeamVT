@@ -110,6 +110,7 @@ export default StyleSheet.create({
         alignItems:'center',
         flexDirection:'row',
         padding: height/120,
+        backgroundColor:'#353b48'
         //marginTop: height / 50,        
     },
     viewTitleHeader: {
@@ -117,7 +118,7 @@ export default StyleSheet.create({
         justifyContent: 'space-between'
     },
     title: {
-        fontSize: height / 30,
+        fontSize: height / 25,
         color: 'white'
     },
     iconHeader: {
