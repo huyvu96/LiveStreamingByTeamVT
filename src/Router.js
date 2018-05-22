@@ -4,13 +4,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Dimensions } from 'react-native';
 import React, { Component } from 'react';
-
+import VodScreen from './Components/VodScreen';
 import Home from './TabNavigator/Home';
 import Discover from './TabNavigator/Discover';
 import Live from './TabNavigator/Library';
 import User from './TabNavigator/User';
 import Nofication from './TabNavigator/Nofication'
 import ScreenLogin from './Screen/ScreenLogin';
+import DetailScreen from './Screen/DetailScreen';
 const { height, width } = Dimensions.get('window');
 
 export const TabBar = TabNavigator({
@@ -68,7 +69,7 @@ export const TabBar = TabNavigator({
             showLabel: false,
             showIcon: true,
             style: {
-                backgroundColor: '#000',
+                backgroundColor: '#151114',
                 borderTopColor: 'white',
                 borderTopWidth: 0.18,
                 height: height / 15,
@@ -100,6 +101,8 @@ export const RootNavigator = StackNavigator({
     ScreenLogin: { screen: ScreenLogin },
     Nofication:{screen: Nofication},
     User:{screen:User},
+    DetailScreen:{screen:DetailScreen},
+    VodScreen:{screen:VodScreen}
 },
     {
         initialRouteName: "TabBar",

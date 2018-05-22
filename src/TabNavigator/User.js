@@ -40,7 +40,7 @@ export default class User extends Component {
             <View style={style.container}>
                  {/* View header */}
                  <View style={style.viewHeader}>     
-                     <Text style={{color:'#353b48'}}>Tôi</Text>
+                     <Text style={{color:'#151114'}}>Tôi</Text>
                      <Text style={style.title}>Cá nhân</Text>
                      <TouchableOpacity>
                             <Icon name="md-menu" style={style.icon} />

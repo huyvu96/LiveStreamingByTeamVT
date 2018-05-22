@@ -17,7 +17,7 @@ export default class App extends Component {
             <Provider store = {store}>
             <View style= {{flex:1}}>
             <StatusBar
-                backgroundColor="#161823"
+                backgroundColor="#151114"
                 translucent = {false}
             />
                 {/* <PersistGate loading={null} persistor={persistor}> */}

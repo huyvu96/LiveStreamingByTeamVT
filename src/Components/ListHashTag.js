@@ -6,7 +6,7 @@ export default class ListCommicH extends Component {
     state = {  }
     _renderRecommend = ({ item }) => {
         return (
-            <TouchableNativeFeedback>
+            <TouchableNativeFeedback onPress={()=> this.props.navigation.navigate('DetailScreen', {name: item.name})}>
                 <View style = {{width: height/7}}>
                 <Image source={{uri: item.image}} style={styles.imageItemtop}/>
                 <Text  numberOfLines = {2} style ={styles.titleCommic}>{item.name}</Text>

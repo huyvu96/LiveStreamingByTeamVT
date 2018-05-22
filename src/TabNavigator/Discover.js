@@ -74,7 +74,7 @@ export default class Home extends Component {
                             </Swiper>
                         }
                 </View>
-                       <ListHashTag data = {this.state.data}/>  
+                       <ListHashTag data = {this.state.data} navigation={this.props.navigation}/>  
                     {/* <View style={styles.wraper2}>
                         <View style={styles.viewPage}>
                             <View style={styles.tron}></View>

@@ -74,7 +74,7 @@ export default class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                 <SwiperLive />
+                 <SwiperLive navigation ={this.props.navigation} />
                 {/* <View style ={styles.viewHome}>
                     <TouchableOpacity onPress = {() => this.onChooseTab(1)}>
                         <View>

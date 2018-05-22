@@ -18,13 +18,13 @@ export default StyleSheet.create({
     },
     viewAbove: {
         flex: 0.35,
-       // backgroundColor: "#1e272e",
+        backgroundColor: "#151114",
         alignItems:'center',
         justifyContent:'center'
     },
     viewBehind: {
         flex: 0.65,
-        backgroundColor: "#1e272e"
+        backgroundColor: "#212022"
     },
     viewAvatar: {
         flexDirection: 'row'
@@ -87,7 +87,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2A2D2E'
+        backgroundColor: '#151114'
     },
     videoArea: {
         height: height / 13.5,
@@ -110,7 +110,7 @@ export default StyleSheet.create({
         alignItems:'center',
         flexDirection:'row',
         padding: height/120,
-        backgroundColor:'#353b48'
+        backgroundColor:'#151114'
         //marginTop: height / 50,        
     },
     viewTitleHeader: {

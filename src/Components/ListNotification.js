@@ -22,14 +22,14 @@ export default class ListNotification extends Component {
     _renderRecommend = ({ item }) => {
         return (
             <TouchableNativeFeedback>
-                <View style={{flexDirection:'row', alignItems:'center', margin: 5,backgroundColor:'#000'}}>
-                    <View style={{marginLeft:5}} >
-                        <Image source={{ uri: item.image }} style={{ height: 80, width: 80 }} />
+                <View style={{flexDirection:'row', alignItems:'center', margin: height/120,borderRadius: height/120, borderWidth:0.8, borderColor:'white', padding: height/120}}>
+                    <View>
+                        <Image source={{ uri: item.image }} style={{ height: height/10, width:  height/10 }} />
                     </View>
-                    <View style={{ marginLeft: 15 }}>
-                        <Text style={{ fontSize: 20, color:'white' }}>{item.title}</Text>
-                        <Text style={{ fontSize: 20, color:'white' }}>{item.description}</Text>
-                        <Text style={{ fontSize: 20, color:'white' }}>{item.time}</Text>
+                    <View style={{ marginLeft: height/100 }}>
+                        <Text style={{ fontSize: height/40, color:'white' }}>{item.title}</Text>
+                        <Text style={{ fontSize: height/45, color:'white' }}>{item.description}</Text>
+                        <Text style={{ fontSize: height/45, color:'white' }}>{item.time}</Text>
                     </View>
                 </View>
             </TouchableNativeFeedback>

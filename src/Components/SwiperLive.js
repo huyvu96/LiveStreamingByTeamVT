@@ -20,7 +20,8 @@ import styles from './../styles';
 import data from '../dataCanlendar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient'
-import ListCanlendar from './ListCanlendar'
+import ListCanlendar from './ListCanlendar';
+import VodScreen from './VodScreen';
 export default class SwiperLive extends Component {
     render() {
         return (
@@ -29,9 +30,14 @@ export default class SwiperLive extends Component {
                  showsPagination={false} 
                  index={0}
                  >
-                 <View style = {{height: height, width: width}}>
+                 <TouchableNativeFeedback onPress={()=>this.props.navigation.navigate('VodScreen')}> 
+                 <View style = {{flex:1}}>
                   <Image source={{uri: 'https://raw.githubusercontent.com/react-native-training/react-native-elements-app/master/assets/images/bg_screen1.jpg'}} style={styles.imagePopular}/>
                   <LinearGradient colors={['rgba(0,0,0, 0.7)','rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)']}  style={styles.imagePopularLinear}/>
+                  <View style ={styles.viewiTV}>
+                    <Text style ={styles.styleTextiTV}>iTV</Text>
+                    <Text style ={styles.styleTextDesiTV}>Mời bạn chạm vào màn hình để xem video trực tiếp</Text>
+                  </View>
                   <View style ={styles.viewChat}>
                     <Text style ={styles.styleTextChat}>Đang chiếu: Captain American 1</Text>
                   </View>
@@ -39,7 +45,8 @@ export default class SwiperLive extends Component {
                        <Image source={{uri: 'https://lh3.googleusercontent.com/QUu-7yt4PPkkpsA7TpMs0MFAXzrW-fiWIlKlwu7obhpKO9fd393OV32dm-XrvntvMnM=s128'}}  style = {styles.avatarLarge}></Image>
                   </View>
                   </View>
-                  <View style ={{height: height, width: width, flex:1}}>
+                  </TouchableNativeFeedback> 
+                  <View style ={{flex:1}}>
                     <ListCanlendar data={data}/>
                   </View>
                   {/* {data.map((e, i) =>

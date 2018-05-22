@@ -22,9 +22,9 @@ export default class Nofication extends Component {
             <View style={styleNotification.container}>
                 {/* View header */}
                 <View style={styleNotification.viewHeader}>   
-                    <Text style={{color:'#353b48'}}>abc</Text>                 
+                    <Text style={{color:'#151114'}}>abc</Text>                 
                      <Text style={styleNotification.title}>Thông Báo</Text>      
-                     <Text style={{color:'#353b48'}}>abc</Text>                                 
+                     <Text style={{color:'#151114'}}>abc</Text>                                 
                 </View>
                  {/* View các dòng thông báo */}
                     <ListNotification/>

@@ -226,7 +226,7 @@ render() {
                                 style={{
                                     opacity: headerTextOpacity,
                                 }}>                            
-                                <TouchableNativeFeedback onPress={() => this.onFacebook()}>
+                                <TouchableNativeFeedback onPress={() => this.props.navigation.navigate("TabBar")}>
                                     <View
                                         style={{
                                             flexDirection: 'row',
