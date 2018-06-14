@@ -9,24 +9,40 @@ import {
     ScrollView,
     Dimensions,
     Image,
-    TouchableNativeFeedback, 
+    TouchableNativeFeedback,
     ImageBackground,
     TextInput,
-    StatusBar} from 'react-native';
+    StatusBar
+} from 'react-native';
 import Swiper from 'react-native-swiper';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ListHashTag from '../Components/ListHashTag';
+import ListHashTag from '../Components/ListView/ListHashTag';
 import LinearGradient from 'react-native-linear-gradient'
-import data from '../data';
-const { height } = Dimensions.get('window')
-//const data = Array(20).fill().map((_, index) => ({ key: index }))
+const { height, width } = Dimensions.get('window')
+import axios from 'axios';
+import { baseURL } from '../Database/getAPI';
+import { connect } from 'react-redux';
+import { fetchingDataMoviebyCategory } from '../Redux/Action/actionGetMovieByCategory';
+import { fetchingDataDetailMovieByID } from '../Redux/Action/actionGetDetailByID';
+import { fetchingDataTopMovieByCategory } from '../Redux/Action/actionGetTopMovieByCategory';
+import {fetchingDataMoviebyCategoryMain} from '../Redux/Action/actionGetMovieByCategoryMain';
 import styles from './../styles';
-export default class Home extends Component {
+import {
+    BallIndicator,
+    BarIndicator,
+    DotIndicator,
+    MaterialIndicator,
+    PacmanIndicator,
+    PulseIndicator,
+    SkypeIndicator,
+    UIActivityIndicator,
+    WaveIndicator,
+} from 'react-native-indicators';
+class Discover extends Component {
     constructor(props) {
         super(props)
         this.state = {
             visiableSwiper: false,
-            data: data
         }
 
     }
@@ -37,81 +53,137 @@ export default class Home extends Component {
                 this.setState({ visiableSwiper: true })
             }, 0)
         }
+        this.props.fetchingDataMoviebyCategoryMain(1, 'Phim lẻ');
+        this.props.fetchingDataMoviebyCategoryMain(1, 'Phim bộ');
+        this.props.fetchingDataMoviebyCategoryMain(1, 'TV Show');
+        this.props.fetchingDataTopMovieByCategory('Phim lẻ');
     }
     render() {
+        console.log("Discover "+this.props.dataPhimLeMain);
         return (
             <View style={styles.container}>
-            <ScrollView style={styles.container}> 
-                <View style ={{padding:height/120,backgroundColor: 'transparent',alignItems:'center',justifyContent:'center',flexDirection:'row',  position: 'absolute',
-           left: 0,
-           top: 0,
-           zIndex:100}}>
-                <Icon name ='ios-search' style ={{fontSize: height/20, color: 'white'}}/>       
-                <Text style ={{marginLeft:height/120,fontSize: height/ 40 ,padding: 5,alignSelf:'stretch',  color: 'white',textAlign:'center',height:height/20
-             ,borderRadius: height/20, borderColor:'white', borderWidth:0.8,flex:1
-            }}>Search video, channel for you</Text>
-                </View>
-                <View style={styles.container}>
-                    <View style={styles.wraperSwiper1}>
-                        {
-                            this.state.visiableSwiper && <Swiper
-                                style={styles.wrapperSwiper}
-                                dot={<View style={{ backgroundColor: '#FFF', width: 5, height: 5, borderRadius: 7, marginLeft: 7, marginRight: 7 }} />}
-                                activeDot={<View style={{ backgroundColor: '#e53935', width: 5, height: 5, borderRadius: 7, marginLeft: 7, marginRight: 7 }} />}
-                                autoplay={true}>
-                                <ImageBackground source={{ uri: 'https://pre00.deviantart.net/ff8b/th/pre/f/2017/192/5/c/dragon_ball_super_wallpaper___2_by_windyechoes-dbfvsvd.png' }} style={styles.slide}>
-                                <LinearGradient colors={['rgba(0,0,0, 0.7)','rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)']}  style={styles.slide}/>
-                                </ImageBackground>
-                                <ImageBackground source={{ uri: 'https://pre00.deviantart.net/f426/th/pre/f/2017/201/2/7/son_goku_s_ultimate_limit_breaker_wallpaper_by_windyechoes-dbh398e.png' }} style={styles.slide}>
-                                <LinearGradient colors={['rgba(0,0,0, 0.7)','rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)']}  style={styles.slide}/>
-                                </ImageBackground>
-                                <ImageBackground source={{ uri: 'https://pre00.deviantart.net/648f/th/pre/f/2017/192/7/a/dragon_ball_super_next_gen_group_wallpaper_by_windyechoes-dbfvor0.png' }} style={styles.slide}>
-                                <LinearGradient colors={['rgba(0,0,0, 0.7)','rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)']}  style={styles.slide}/>
-                                </ImageBackground>
-                                <ImageBackground source={{ uri: 'https://pre00.deviantart.net/3bef/th/pre/f/2016/310/f/d/dragon_ball_super_wallpaper_vegito_vs_zamasu_by_windyechoes-danko3v.jpg' }} style={styles.slide}>
-                                 <LinearGradient colors={['rgba(0,0,0, 0.7)','rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)']}  style={styles.slide}/>
-                                </ImageBackground>
-                            </Swiper>
-                        }
-                </View>
-                       <ListHashTag data = {this.state.data} navigation={this.props.navigation}/>  
-                    {/* <View style={styles.wraper2}>
-                        <View style={styles.viewPage}>
-                            <View style={styles.tron}></View>
-                            <Text style={styles.titlePage}>Mới trong ngày</Text>
-                        </View>
+                <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+                    <View style={{
+                        padding: height / 120, backgroundColor: 'transparent', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', position: 'absolute',
+                        left: 0,
+                        top: 0,
+                        zIndex: 100
+                    }}>
+                        <Icon name='ios-search' style={{ fontSize: height / 20, color: 'white' }} />
+                        <Text style={{
+                            marginLeft: height / 120, fontSize: height / 40, padding: 5, alignSelf: 'stretch', color: 'white', textAlign: 'center', height: height / 20
+                            , borderRadius: height / 20, borderColor: 'white', borderWidth: 0.8, flex: 1
+                        }}>Search video, channel for you</Text>
                     </View>
-                    <View style={styles.wraper2}>
-                        <View style={styles.viewPage}>
-                            <View style={styles.tron}></View>
-                            <Text style={styles.titlePage}>Thể loại được xem nhiều nhất</Text>
+                    <View style={styles.container}>
+                        <View style={styles.wraperSwiper1}>
+                            {
+                                this.props.dataTop.length ? (this.state.visiableSwiper && <Swiper
+                                    style={styles.wrapperSwiper}
+                                    dot={<View style={{ backgroundColor: '#FFF', width: 5, height: 5, borderRadius: 7, marginLeft: 7, marginRight: 7 }} />}
+                                    activeDot={<View style={{ backgroundColor: '#e53935', width: 5, height: 5, borderRadius: 7, marginLeft: 7, marginRight: 7 }} />}
+                                    autoplay={true}>
+                                    {/* { this.props.dataTop.map((e,i)=>{
+                                        <View  key={i} style={{height:null, width:null}}>
+                                        <Image  source={{ uri: e.backdrop_path}} style={styles.slide}>
+                                        <LinearGradient colors={['rgba(0,0,0, 0.7)', 'rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.3)']} style={styles.slide} />
+                                     </Image>
+                                        </View>
+                                     
+                                    })                                        
+                                    } */}
+                                    <ImageBackground source={{ uri: this.props.dataTop[0].backdrop_path }} style={styles.slide}>
+                                        <LinearGradient colors={['rgba(0,0,0, 0.7)', 'rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.3)']} style={styles.slide} />
+                                    </ImageBackground>
+                                    <ImageBackground source={{ uri: this.props.dataTop[1].backdrop_path }} style={styles.slide}>
+                                        <LinearGradient colors={['rgba(0,0,0, 0.7)', 'rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.3)']} style={styles.slide} />
+                                    </ImageBackground>
+                                    <ImageBackground source={{ uri: this.props.dataTop[2].backdrop_path }} style={styles.slide}>
+                                        <LinearGradient colors={['rgba(0,0,0, 0.7)', 'rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.3)']} style={styles.slide} />
+                                    </ImageBackground>
+                                    <ImageBackground source={{ uri: this.props.dataTop[3].backdrop_path }} style={styles.slide}>
+                                        <LinearGradient colors={['rgba(0,0,0, 0.7)', 'rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.3)']} style={styles.slide} />
+                                    </ImageBackground>
+                                    <ImageBackground source={{ uri: this.props.dataTop[4].backdrop_path }} style={styles.slide}>
+                                        <LinearGradient colors={['rgba(0,0,0, 0.7)', 'rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.3)']} style={styles.slide} />
+                                    </ImageBackground>
+                                </Swiper>) : (<View style={styles.viewAcdicator}><BarIndicator color='white' count={4} size={30} /></View>)
+                            }
                         </View>
-                        <ListGenres data = {this.state.data}/> 
+                        <View style={styles.wraper2}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={styles.viewPage}>
+                                    <Text style={styles.tron}>#</Text>
+                                    <Text style={styles.titlePage}>Phim lẻ</Text>
+                                </View>
+                                <TouchableNativeFeedback onPress={()=> this.props.navigation.navigate('ScreenViewMore',{category:'Phim lẻ'})}>
+                                    <View style={styles.viewPage}>
+                                        <Text style={[styles.tron, { fontWeight: '200', fontSize: height / 40 }]}>Xem thêm</Text>
+                                    </View>
+                                </TouchableNativeFeedback>
+                            </View>
+                            {
+                                this.props.isLoadingPhimLeMain ? (<View style={styles.viewAcdicator}><BarIndicator color='white' count={4} size={30} /></View>)
+                                    : (<ListHashTag data={this.props.dataPhimLeMain} navigation={this.props.navigation} />)
+                            }
+                        </View>
+                        <View style={styles.wraper2}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={styles.viewPage}>
+                                    <Text style={styles.tron}>#</Text>
+                                    <Text style={styles.titlePage}>Phim bộ</Text>
+                                </View>
+                                <TouchableNativeFeedback onPress={()=> this.props.navigation.navigate('ScreenViewMore',{category:'Phim bộ'})}>
+                                    <View style={styles.viewPage}>
+                                        <Text style={[styles.tron, { fontWeight: '200', fontSize: height / 40 }]}>Xem thêm</Text>
+                                    </View>
+                                </TouchableNativeFeedback>
+                            </View>
+                            {
+                                this.props.isLoadingPhimBoMain ? (<View style={styles.viewAcdicator}><BarIndicator color='white' count={4} size={30} /></View>)
+                                    : (<ListHashTag data={this.props.dataPhimBoMain} navigation={this.props.navigation} />)
+                            }
+                        </View>
+                        <View style={styles.wraper2}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View style={styles.viewPage}>
+                                    <Text style={styles.tron}>#</Text>
+                                    <Text style={styles.titlePage}>TV Show</Text>
+                                </View>
+                                <TouchableNativeFeedback onPress={()=> this.props.navigation.navigate('ScreenViewMore',{category:'TV Show'})}>
+                                    <View style={styles.viewPage}>
+                                        <Text style={[styles.tron, { fontWeight: '200', fontSize: height / 40 }]}>Xem thêm</Text>
+                                    </View>
+                                </TouchableNativeFeedback>
+                            </View>
+                            {
+                                this.props.isLoadingTVShowMain ? (<View style={styles.viewAcdicator}><BarIndicator color='white' count={4} size={30} /></View>)
+                                    : (<ListHashTag data={this.props.dataTVShowMain} navigation={this.props.navigation} />)
+                            }
+                        </View>        
                     </View>
-                    <View style={styles.wraper2}>
-                        <View style={styles.viewPage}>
-                            <View style={styles.tron}></View>
-                            <Text style={styles.titlePage}>Được xem nhiều nhất</Text>
-                        </View>
-                        <ListCommic data = {this.state.data}/> 
-                    </View>
-                    <View style={styles.wraper2}>
-                        <View style={styles.viewPage}>
-                            <View style={styles.tron}></View>
-                            <Text style={styles.titlePage}>iBook tuyển chọn</Text>
-                        </View>
-                         <ListDetailCommic data = {this.state.data} /> 
-                    </View>
-                    <View style={styles.wraper2}>
-                        <View style={styles.viewPage}>
-                            <View style={styles.tron}></View>
-                            <Text style={styles.titlePage}>iBook đoán bạn thích</Text>
-                        </View>
-                         <ListCommic data = {this.state.data}/> 
-                    </View> */}
-                </View>
-            </ScrollView>            
+                </ScrollView>
             </View>
         );
     }
 }
+function mapStateToProps(state) {
+    return {
+        dataPhimLeMain: state.getMovieByCategoryMain.dataPhimLeMain,
+        dataPhimBoMain: state.getMovieByCategoryMain.dataPhimBoMain,
+        dataTVShowMain: state.getMovieByCategoryMain.dataTVShowMain,
+        isLoadingPhimLeMain: state.getMovieByCategoryMain.isLoadingPhimLeMain,
+        isLoadingPhimBoMain: state.getMovieByCategoryMain.isLoadingPhimBoMain,
+        isLoadingTVShowMain: state.getMovieByCategoryMain.isLoadingTVShowMain,
+        errorPhimLeMain: state.getMovieByCategoryMain.errorPhimLeMain,
+        errorPhimBoMain: state.getMovieByCategoryMain.errorPhimBoMain,
+        errorTVShowMain: state.getMovieByCategoryMain.errorTVShowMain,
+        dataradi: state.getDetailMovie.data,
+        dataTop: state.getTopMovie.dataTop
+    };
+}
+
+export default connect(mapStateToProps, { fetchingDataMoviebyCategory, 
+    fetchingDataDetailMovieByID, 
+    fetchingDataTopMovieByCategory,
+    fetchingDataMoviebyCategoryMain })(Discover);

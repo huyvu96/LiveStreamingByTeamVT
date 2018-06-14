@@ -17,8 +17,7 @@ import {
 import Swiper from 'react-native-swiper';
 import * as Animatable from 'react-native-animatable';
 const { height, width } = Dimensions.get('window');
-import ListVideo from '../Components/ListVideo';
-import SwiperLive from '../Components/SwiperLive';
+import SwiperLive from '../Components/Swiper/SwiperLive';
 
 //const data = Array(20).fill().map((_, index) => ({ key: index }))
 import styles from './../styles';

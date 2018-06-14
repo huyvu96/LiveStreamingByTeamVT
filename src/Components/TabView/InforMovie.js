@@ -17,8 +17,9 @@ import {
 import Swiper from 'react-native-swiper';
 import * as Animatable from 'react-native-animatable';
 const { height, width } = Dimensions.get('window');
-import ListPeople from './ListPeople'
-import styles from './../styles';
+import ListPeople from '../ListView/ListPeople';
+import styles from '../../styles';
+import moment from 'moment';
 export default class InforMovie extends Component {
     constructor(props) {
         super(props)
@@ -34,21 +35,21 @@ export default class InforMovie extends Component {
             <ScrollView>
             <View style ={{padding: 10}}>
             <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-            <Text style={{color:'white',fontSize:18}}>{this.props.data}</Text>
-            <Text style={{color:'#1875D6',fontSize:18}}>1/1</Text>
+            <Text style={{color:'white',fontSize:18}}>{this.props.title}</Text>
+            <Text style={{color:'#1875D6',fontSize:18}}>{this.props.part+"/"+this.props.episode_number}</Text>
             </View>
-            <Text style={{color:'grey'}}>17-5-2018</Text>
-            <Text style={{color:'white',fontSize:14, marginTop:3,marginBottom:3}}>Việt nam - 83 phút - Phụ đề</Text>
-            <Text style={{color:'white',fontSize:13}}>Hành động - Trinh thám</Text>
-            <Text style={{color:'grey'}}>Đường vắng, đêm trăng, 1 vụ tai nạn làm chết một cô gái và từ đó, cứ mỗi đêm trăng rằm người ta lại thấy cô gái ấy trở về. Bạn có tin trên đời này có ma? Bạn có tin vào luật nhân quả, sự trả thù cũa nhưng người chết không nhắm mắt? Còn bí mật kinh hoàng nào ẩn giấu sau nhưng vụ án ly kì này</Text>
+            <Text style={{color:'grey'}}>{moment(this.props.release_date).format("DD/MM/YYYY")}</Text>
+            <Text style={{color:'white',fontSize:14, marginTop:3,marginBottom:3}}>{this.props.language.map(e=> e.name_language + " - ") + this.props.run_time}</Text>
+            <Text style={{color:'white',fontSize:13}}>{this.props.genres.map((e,i) => e.name_genre + "  ")}</Text>
+            <Text numberOfLines={9} style={{color:'grey'}}>{this.props.overview}</Text>
             </View>
             <View>
             <Text style={{color:'white'}}>Diễn viên</Text>   
-            <ListPeople/>
+            <ListPeople data = {this.props.actor}/>
             </View>
             <View>
             <Text style={{color:'white'}}>Tác giả</Text>   
-            <ListPeople/>
+            <ListPeople data = {this.props.director}/>
             </View>
             </ScrollView>
             </View>

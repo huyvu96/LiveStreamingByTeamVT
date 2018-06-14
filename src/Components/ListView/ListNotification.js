@@ -16,8 +16,8 @@ import {
 import Swiper from 'react-native-swiper';
 import * as Animatable from 'react-native-animatable';
 const { height, width } = Dimensions.get('window');
-import styles from './../TramStyle';
-import dataNotification from '../dataTram';
+import styles from '../../TramStyle';
+import dataNotification from '../../dataTram';
 export default class ListNotification extends Component {
     _renderRecommend = ({ item }) => {
         return (
@@ -46,7 +46,7 @@ export default class ListNotification extends Component {
                 automaticallyAdjustContentInsets={true}
                 extraData={this.state}
                 showsVerticalScrollIndicator={false}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.id.toString()}
                 renderItem={this._renderRecommend} />
         );
     }

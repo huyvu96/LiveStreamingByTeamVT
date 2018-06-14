@@ -5,12 +5,17 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import {TabBar, RootNavigator} from './Router';
 import styles from './styles'
+import Orientation from 'react-native-orientation'
+
 //const {persistor, store} = configureStore()
 //StatusBar.setHidden(true);
 
 export default class App extends Component {
     constructor(props){
         super(props);    
+      }
+      componentWillMount() {
+        Orientation.lockToPortrait()
       }
     render() {
         return (

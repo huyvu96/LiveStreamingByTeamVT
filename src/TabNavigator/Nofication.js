@@ -12,7 +12,7 @@ const { height, width } = Dimensions.get('window')
 import Icon from 'react-native-vector-icons/Ionicons'
 //const data = Array(20).fill().map((_, index) => ({ key: index }))
 import styleNotification from '../TramStyle';
-import ListNotification from '../Components/ListNotification';
+import ListNotification from '../Components/ListView/ListNotification';
 export default class Nofication extends Component {
     constructor(props) {
         super(props)

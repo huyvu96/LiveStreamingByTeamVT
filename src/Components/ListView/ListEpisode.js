@@ -17,20 +17,19 @@ import Swiper from 'react-native-swiper';
 import * as Animatable from 'react-native-animatable';
 const { height, width } = Dimensions.get('window');
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import styles from './../styles';
+import styles from '../../styles';
 import LinearGradient from 'react-native-linear-gradient'
 
-import data from '../data';
-export default class ListVideo extends Component {
+export default class ListEpisode extends Component {
     _renderRecommend = ({ item }) => {
         return (
-            <TouchableNativeFeedback>
-                <View style = {{width: (width-(height/120 *4))/2, margin:height/120, borderRadius: height/100, overflow:'hidden'}}>
-                <Image source={{uri: item.image}} style={styles.imageItemtop}/>
-                <LinearGradient colors={['rgba(0,0,0, 0)','rgba(0, 0, 0, 0)', 'rgba(0,0,0, 0.1)']}  style={styles.imageItemtopLinear}/>
-                <View style ={styles.styleViewItemBottom}>
-                    <Text numberOfLines={2} style ={styles.styleTextName}>Thám tử Henry</Text>
-                    <Text style ={[styles.styleTextName,{fontSize:height/50}]}>Việt Nam / 17-05-2016</Text>
+            <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('VodScreen', {url: item.url_link, title: this.props.title})}>
+                <View style = {{width: (width-(height/120 *6))/3, margin:height/120, borderRadius: height/100,borderColor:'white',borderWidth:height/1000, overflow:'hidden'}}>
+                {/* <Image source={{uri: this.props.imageEpi}} style={styles.imageItemtopEpisode}/> */}
+                {/* <LinearGradient colors={['rgba(0,0,0, 0)','rgba(0, 0, 0, 0)', 'rgba(0,0,0, 0.1)']}  style={styles.imageItemtopEpisodeLinear}/> */}
+                <View>
+                    <Text numberOfLines={2} style ={[styles.styleTextName,{textAlign:'center',fontSize:height/35}]}>{"Tập "+ item.part}</Text>
+                    {/* <Text style ={[styles.styleTextName,{fontSize:height/50}]}>{this.props.title}</Text> */}
                 </View>
                 </View>              
             </TouchableNativeFeedback>  
@@ -40,19 +39,16 @@ export default class ListVideo extends Component {
         return (
             <View style={styles.container}>
             <FlatList
-            data={data}
+            data={this.props.dataEpi}
             removeClippedSubviews={true}     
-            //  contentContainerStyle={{padding:height/60}}       
             horizontal={false}
-            numColumns={2}
-            //ItemSeparatorComponent = {() => {return (<View style = {{width: height/ 50,}}/>)}}
+            numColumns={3}
             automaticallyAdjustContentInsets={true}                  
             extraData= {this.state}
             showsVerticalScrollIndicator={false}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.id.toString()}
             renderItem={this._renderRecommend}/>    
-            </View>
-            
+            </View>  
         );
     }
 }

@@ -8,6 +8,8 @@ YellowBox.ignoreWarnings([
   'Warning: componentWillMount is deprecated',
   'Warning: componentWillReceiveProps is deprecated',
   'Warning: componentWillUpdate is deprecated',
-  'Warning: isMounted(...) is deprecated'
+  'Warning: isMounted(...) is deprecated',
+  'Warning: Can only update a mounted or mounting component',
+
 ]);
 AppRegistry.registerComponent('LiveStreamingByTeamVT', () => AppMain);

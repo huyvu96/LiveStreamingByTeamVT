@@ -17,7 +17,7 @@ import {
 import Swiper from 'react-native-swiper';
 import * as Animatable from 'react-native-animatable';
 const { height, width } = Dimensions.get('window');
-import styles from './../styles';
+import styles from '../../styles';
 export default class ListMovie extends Component {
     constructor(props) {
         super(props)

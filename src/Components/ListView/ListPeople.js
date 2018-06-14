@@ -17,15 +17,14 @@ import Swiper from 'react-native-swiper';
 import * as Animatable from 'react-native-animatable';
 const { height, width } = Dimensions.get('window');
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import styles from './../styles';
-import data from '../data';
+import styles from '../../styles';
 export default class ListPeople extends Component {
     _renderRecommend = ({ item }) => {
         return (
             <TouchableNativeFeedback>
                 <View style ={{alignItems:'center'}}>
-                <Image source={{uri: item.image}} style={styles.avatarLarge}/>
-                <Text  numberOfLines = {2} style ={styles.titlePeople}>{item.name}</Text>
+                <Image source={{uri: "http://www.ahfirstaid.org/wp-content/uploads/2014/07/avatar-placeholder.png"}} style={styles.avatarLarge}/>
+                <Text  numberOfLines = {2} style ={styles.titlePeople}>{item.name_people}</Text>
                 </View>              
             </TouchableNativeFeedback>  
         );
@@ -33,7 +32,7 @@ export default class ListPeople extends Component {
     render() {
         return (
             <FlatList
-            data={data}
+            data={this.props.data}
             removeClippedSubviews={true}     
             contentContainerStyle={{padding:height/60}}       
             horizontal={true}
@@ -42,7 +41,7 @@ export default class ListPeople extends Component {
             automaticallyAdjustContentInsets={true}                  
             extraData= {this.state}
             showsVerticalScrollIndicator={false}
-            keyExtractor={(item) => item.name}
+            keyExtractor={(item) => item.id.toString()}
             renderItem={this._renderRecommend}/>
         );
     }

@@ -14,7 +14,7 @@ export default StyleSheet.create({
     styleDivide: {width: height/800, height: height/100, backgroundColor:'white', margin: height/100, alignSelf: 'center'},
     imageItemtop:{height: height/2.5,width: width/2,resizeMode: 'cover',},
     imageItemtopLinear:{height: height/2.5,width: width/2,position: 'absolute'},
-    imageItemtopEpisode:{height: height/4,width: width/3,resizeMode: 'cover',},
+    imageItemtopEpisode:{height: height/4,width: width/3,resizeMode: 'contain',},
     imageItemtopEpisodeLinear:{height: height/4,width: width/3,position: 'absolute'},
     imagePopular: {height: null,width: null,resizeMode: 'cover', flex:1},
     imagePopularLinear: {height: null,width: null,position: 'absolute',flex:1},
@@ -42,17 +42,17 @@ export default StyleSheet.create({
         height: undefined,
         backgroundColor: '#000'
     },
-   wrapperSwiper: {
-        //backgroundColor: '#2d3436',
-        height: height / 3.5,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
+    // slide: {
+    //     //backgroundColor: '#2d3436',
+    //     height: height / 3.5,
+    //     alignItems: 'center',
+    //     justifyContent: 'center'
+    // },
     slide: {
         //alignSelf: 'stretch',
         height: height / 3.5,
         width: null,
-        position: 'relative',
+        //position: 'relative',
       //  resizeMode: 'cover'
     },
     slideLinear: {
@@ -68,15 +68,17 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     titlePage: {
-        fontSize: height / 40,
+        fontSize: height / 35,
         fontWeight: 'normal',
         marginLeft: height / 60,
         color: 'white'
     },
     tron: {
-        backgroundColor: '#d35400',
-        height: height / 30,
-        width: height / 120,
+        backgroundColor: 'transparent',
+        fontSize: height/35,
+        fontWeight: 'bold',
+        color: '#d35400',
+        marginLeft: height/80
         //borderRadius: height/30
     },
     titlePeople: {
@@ -85,6 +87,9 @@ export default StyleSheet.create({
         color: 'white',
         marginBottom: height / 100,
     },
+    viewAcdicator:{
+        height: height/5,alignItems:'center',justifyContent:'center'
+    }
     // containerE: {
     //     backgroundColor: 'transparent',
     //     flex: 1,

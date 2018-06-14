@@ -54,15 +54,5 @@ export default data =[{
     time: '12:00',
     name: 'Phim: Kungfu Panda 1'
 },
-{
-    id: 14,
-    time: '13:00',
-    name: 'Phim: Kungfu Panda 1'
-},
-{
-    id: 15,
-    time: '14:00',
-    name: 'Phim: Kungfu Panda 1'
-},
 ];
 

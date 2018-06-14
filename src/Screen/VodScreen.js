@@ -14,11 +14,24 @@ import {
   processColor,
   TouchableOpacity,
   Image,
-  StatusBar
+  StatusBar,TouchableWithoutFeedback,Dimensions
 } from 'react-native';
 import KSYVideo from 'react-native-ksyvideo';
-import ProgressController from './ProgressController'
-
+import ProgressController from '../Components/Video/ProgressController';
+import {
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
+  WaveIndicator,
+} from 'react-native-indicators';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+const { height, width } = Dimensions.get('window');
+import Orientation from 'react-native-orientation'
 export default class VodScreen extends Component {
     constructor(props) {
       super(props);
@@ -28,9 +41,13 @@ export default class VodScreen extends Component {
         windowHeight: 0,
         duration: 0.0,
         currentTime: 0.0,
+        isLoading:false,
       };
     }
-
+    
+    componentWillMount() {
+      Orientation.lockToLandscape()
+    }
     _onLayout(event) 
     {  
       let {x,y,width,height} = event.nativeEvent.layout;  
@@ -38,7 +55,7 @@ export default class VodScreen extends Component {
     } 
 
     _onLoad(data){
-      this.setState({ duration: data.duration });
+      this.setState({ duration: data.duration, isLoading:true,showbar: !this.state.showbar});
     };
 
     _onProgress(data){
@@ -71,19 +88,19 @@ export default class VodScreen extends Component {
     }
 
     render() {
-   // const { params } = this.props.navigation.state;
+    const { params } = this.props.navigation.state;
     let {currentTime, duration, paused, windowHeight} = this.state;
     const completedPercentage = this.getCurrentTimePercentage(currentTime, duration) * 100;
     return (
         <View style={styles.container} onLayout={this._onLayout.bind(this)}>   
-           
+
             <StatusBar
               hidden={!this.state.showbar}
               />
           
           <KSYVideo
               ref={(video)=>{this.video = video}}
-              source={{uri:'http://192.168.1.114:5080/oflaDemo/playlist.m3u8'}}
+              source={{uri: params.url}}
               timeout={{prepareTimeout:60, readTimeout:60}}
               paused={this.state.paused}
               playInBackground={true}
@@ -93,24 +110,34 @@ export default class VodScreen extends Component {
                             )
                             }
                       }
+               
               onLoad={this._onLoad.bind(this)}
-              onEnd={()=>{console.log("JS onCompletion");}}
-              onError={(data)=>{console.log("JS onError:" + data.error.what + data.error.extra);}}
+              onEnd={()=>{this.props.navigation.goBack();console.log("JS onCompletion");}}
+              onError={(data)=>{this.props.navigation.goBack();console.log("JS onError:" + data.error.what + data.error.extra);}}
               onProgress={this._onProgress.bind(this)}
               onReadyForDisplay = {(data)=>{console.log("JS Video render start");}}
               style={styles.fullScreen}
             />
         
-          {this.state.showbar?(
-            <View style={{height: 10, marginRight:10, alignSelf:'flex-end'}}>
+          {!this.state.isLoading?(
+            <View style={{height: 10, marginRight:10, alignSelf:'center'}}>
               <View style={{height:windowHeight, justifyContent:'center'}}>
-                <TouchableOpacity onPress={()=>{this.video.saveBitmap();}}>
-                   {/* <Image style={{width:40,height:40}} source={require("../../res/images/screen_shot.png")}/> */}
-                </TouchableOpacity>
+                <BarIndicator color='white' count={4} size={30}/>
               </View>
             </View>):(null)}      
-        
-          {this.state.showbar?(
+            {this.state.showbar?(
+            <View style={{height: 10, marginLeft:10}}>
+              <View style={{height:windowHeight}}>
+              <TouchableWithoutFeedback onPress = {()=>  {Orientation.lockToPortrait(),
+            this.props.navigation.goBack()}}>
+              <View style = {{flexDirection:'row', alignItems:'center'}}>
+              <Ionicons name= 'ios-arrow-back-outline' style ={{fontSize: height/15,color:'white'}} />
+              <Text style = {{marginLeft: 5, color: 'white', fontSize:height/25}}>{"Bạn đang xem phim: "+params.title}</Text>
+              </View>
+        </TouchableWithoutFeedback>              
+        </View>
+            </View>):(null)}   
+          {/* {this.state.showbar?(
             <View style={styles.controller}>
               <View style={styles.progressBar}>
                 <ProgressController duration={duration}
@@ -119,7 +146,7 @@ export default class VodScreen extends Component {
                                     percent={completedPercentage}
                                     onNewPercent={this.onProgressChanged.bind(this)}/>
               </View>
-            </View>):(null)}
+            </View>):(null)} */}
         </View>
     );
   }
@@ -130,7 +157,7 @@ const styles = StyleSheet.create({
     flex: 1,
     //justifyContent: 'center',
     //alignItems: 'center',
-    justifyContent: 'space-between',
+    //justifyContent: 'space-between',
     backgroundColor: 'black',
   },
 
